@@ -116,7 +116,7 @@ pipeline {
                     sh 'docker ps -a'
                     sh 'docker stop $(docker ps -a -q)'
                     //sh 'docker rm $(docker ps -a -q)'
-                    sh 'docker system prune -a -f'
+                  //  sh 'docker system prune -a -f'
                 
               // sh   'docker ps -f name=nodejs-docker -q |xargs --no-run-if-empty docker container stop'
               //sh 'docker container ls -a -fname=nodejs-docker -q | xargs -r docker container rm'
@@ -130,14 +130,14 @@ pipeline {
                               echo "This is release branch"
                                //sh "docker container run -e environment=dev -itd --name ${appName} -p 3000"
                              docker.withRegistry( '', registryCredential ) { 
-                             sh "docker run --env environment=test -dp 8097:3000 devendravemadevops/nodejs-docker:v1.0.0-${env.BUILD_ID}"
+                             sh "docker run --env environment=test -dp 8097:3000 devendravemadevops/release-nodejsdocker:v1.0.0-${env.BUILD_ID}"
                              echo 'Docker running....+${env.BRANCH_NAME}'
                              }
                           }
-                        if("${env.BRANCH_NAME}"=='main'){
+                        if("${env.BRANCH_NAME}"=='staging'){
                              echo "This is  master branch"
                              docker.withRegistry( '', registryCredential ) {
-                                sh "docker run --env environment=dev -dp 8096:3000 devendravemadevops/nodejs-docker:v1.0.0-${env.BUILD_ID}"
+                                sh "docker run --env environment=dev -dp 8096:3000 devendravemadevops/staging-nodejsdocker:v1.0.0-${env.BUILD_ID}"
                               // sh  "docker container run -e environment=test -itd --name ${appName} -p 3000"
                                echo 'Docker running....+${env.BRANCH_NAME}'
                              }
