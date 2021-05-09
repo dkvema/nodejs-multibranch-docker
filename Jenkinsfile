@@ -74,7 +74,7 @@ pipeline {
                script {
                     if("${env.BRANCH_NAME}"=='release'){
                   // sh "export GIT_COMMIT=$(git log -1 --format=%h)"
-                     echo "docker Tagging....release""
+                     echo "docker Tagging....release"
                         app  =  sh "docker  tag ${appName}:v1.0.0   devendravemadevops/release-nodejsdocker:v1.0.0-${env.BUILD_ID} "
                       
                }
