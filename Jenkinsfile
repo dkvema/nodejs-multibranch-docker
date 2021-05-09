@@ -35,6 +35,7 @@ pipeline {
     stages{
         stage('Clone the repository') {
             steps{
+                echo 'webhook integrated'
                 echo sh(script: 'env|sort', returnStdout: true)
                 echo 'cloning the respository..'
                 echo " build version: ${MAJOR_VERSION}.${env.BUILD_ID}"
