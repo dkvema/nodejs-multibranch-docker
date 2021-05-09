@@ -134,7 +134,7 @@ pipeline {
                              echo 'Docker running....+${env.BRANCH_NAME}'
                              }
                           }
-                        if("${env.BRANCH_NAME}"=='main'){
+                        if("${env.BRANCH_NAME}"=='staging'){
                              echo "This is  master branch"
                              docker.withRegistry( '', registryCredential ) {
                                 sh "docker run --env environment=dev -dp 8096:3000 devendravemadevops/nodejs-docker:v1.0.0-${env.BUILD_ID}"
