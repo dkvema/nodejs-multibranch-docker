@@ -131,7 +131,7 @@ pipeline {
                               echo "This is release branch"
                                //sh "docker container run -e environment=dev -itd --name ${appName} -p 3000"
                              docker.withRegistry( '', registryCredential ) { 
-                             sh "docker run --env environment=test -dp 8097:3000 devendravemadevops/staging-nodejsdocker:v1.0.0-${env.BUILD_ID}"
+                             sh "docker run --env environment=test -dp 8097:3000 devendravemadevops/release-nodejsdocker:v1.0.0-${env.BUILD_ID}"
                              echo 'Docker running....+${env.BRANCH_NAME}'
                              }
                           }
