@@ -75,7 +75,7 @@ pipeline {
                   // sh "export GIT_COMMIT=$(git log -1 --format=%h)"
                       app  =  sh "docker  tag ${appName}:v1.0.0   devendravemadevops/release-nodejsdocker:v1.0.0-${env.BUILD_ID} "
                }
-                 
+            }     
                  if("${env.BRANCH_NAME}"=='staging'){
                script {
                   // sh "export GIT_COMMIT=$(git log -1 --format=%h)"
@@ -108,6 +108,7 @@ pipeline {
              }
         }  
         } 
+       //Docker stop container logic is written assuming staging and releasing containers running in different hosts
         stage('Docker stop container') {
             steps {
                  echo 'docker images'
