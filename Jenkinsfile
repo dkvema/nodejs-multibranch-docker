@@ -70,14 +70,16 @@ pipeline {
      stage('Docker Tagginng') {
             steps{
                     echo "docker Tagging...."
-             if("${env.BRANCH_NAME}"=='release'){
+            
                script {
+                    if("${env.BRANCH_NAME}"=='release'){
                   // sh "export GIT_COMMIT=$(git log -1 --format=%h)"
                       app  =  sh "docker  tag ${appName}:v1.0.0   devendravemadevops/release-nodejsdocker:v1.0.0-${env.BUILD_ID} "
                }
             }     
-                 if("${env.BRANCH_NAME}"=='staging'){
+                 
                script {
+                   if("${env.BRANCH_NAME}"=='staging'){
                   // sh "export GIT_COMMIT=$(git log -1 --format=%h)"
                       app  =  sh "docker  tag ${appName}:v1.0.0   devendravemadevops/staging-nodejsdocker:v1.0.0-${env.BUILD_ID} "
                }
@@ -90,19 +92,15 @@ pipeline {
             steps{
              script{
                  if("${env.BRANCH_NAME}"=='release'){
-                docker.withRegistry( '', registryCredential ) { 
-                       
-                          sh "docker push devendravemadevops/release-nodejsdocker:v1.0.0-${env.BUILD_ID} "
-                           echo "docker push...."
+                         docker.withRegistry( '', registryCredential ) {
+                         sh "docker push devendravemadevops/release-nodejsdocker:v1.0.0-${env.BUILD_ID} "
+                         echo "docker push...."
                    }
-                 }  
+                 }
                  if("${env.BRANCH_NAME}"=='staging'){
-                     
                      docker.withRegistry( '', registryCredential ) { 
-                       
                           sh "docker push devendravemadevops/staging-nodejsdocker:v1.0.0-${env.BUILD_ID} "
-                           echo "docker push...."
-                     
+                           echo "docker push...."   
                  }
                 } 
              }
@@ -129,19 +127,18 @@ pipeline {
                               echo "This is release branch"
                                //sh "docker container run -e environment=dev -itd --name ${appName} -p 3000"
                              docker.withRegistry( '', registryCredential ) { 
-                                sh "docker run --env environment=test -dp 8097:3000 devendravemadevops/nodejs-docker:v1.0.0-${env.BUILD_ID}"
-                               echo 'Docker running....+${env.BRANCH_NAME}'
+                             sh "docker run --env environment=test -dp 8097:3000 devendravemadevops/nodejs-docker:v1.0.0-${env.BUILD_ID}"
+                             echo 'Docker running....+${env.BRANCH_NAME}'
                              }
-                               }
+                          }
                         if("${env.BRANCH_NAME}"=='main'){
-                              echo "This is  master branch"
-                             docker.withRegistry( '', registryCredential ) { 
-                     
+                             echo "This is  master branch"
+                             docker.withRegistry( '', registryCredential ) {
                                 sh "docker run --env environment=dev -dp 8096:3000 devendravemadevops/nodejs-docker:v1.0.0-${env.BUILD_ID}"
                               // sh  "docker container run -e environment=test -itd --name ${appName} -p 3000"
                                echo 'Docker running....+${env.BRANCH_NAME}'
                              }
-                      }
+                         }
                    }
                  }
                }  
