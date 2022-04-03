@@ -2,7 +2,7 @@ def appName='nodejs-docker'
 def app
 def versiontag
 def dockerImageName
-def MAJOR_VERSION="1"
+def MAJOR_VERSION="2"
 def ARTIFACT_VERSION="${MAJOR_VERSION}.${BUILD_NUMBER}"
 
 def getGitCommitHash(){
@@ -19,7 +19,7 @@ def generateVersionTag(){
 pipeline {
  
   environment { 
-     registry = "devendravemadevops/nodejs-docker"
+     registry = "devendravemadevops/cts_nodejs_rediscache1"
      registryCredential = 'dockerhubrepository' 
      dockerImage = ''
     }
