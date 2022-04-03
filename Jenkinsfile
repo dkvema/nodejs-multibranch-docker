@@ -19,7 +19,7 @@ def generateVersionTag(){
 pipeline {
  
   environment { 
-     registry = "devendravemadevops/cts_nodejs_rediscache1"
+     registry = "devendravemadevops/nodejs-docker"
      registryCredential = 'dockerhubrepository' 
      dockerImage = ''
     }
