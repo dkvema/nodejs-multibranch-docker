@@ -116,7 +116,7 @@ pipeline {
             steps {
                  echo 'docker images'
                     sh 'docker ps -a'
-                    sh 'docker stop $(docker ps -a -q)'
+                   // sh 'docker stop $(docker ps -a -q)'
                     //sh 'docker rm $(docker ps -a -q)'
                   //  sh 'docker system prune -a -f'
                 
