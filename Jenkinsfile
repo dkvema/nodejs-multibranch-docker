@@ -91,7 +91,7 @@ pipeline {
             }
             }
         }  
-     
+     /*
         stage('upload image to dockerhub') {
             steps{
              script{
@@ -110,6 +110,7 @@ pipeline {
              }
         }  
         } 
+       */
        //Docker stop container logic is written assuming staging and releasing containers running in different hosts
         stage('Docker stop container') {
             steps {
