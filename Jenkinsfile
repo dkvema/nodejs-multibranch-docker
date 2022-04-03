@@ -110,7 +110,7 @@ pipeline {
              }
         }  
         } 
-       */
+       
        //Docker stop container logic is written assuming staging and releasing containers running in different hosts
         stage('Docker stop container') {
             steps {
@@ -124,7 +124,7 @@ pipeline {
               //sh 'docker container ls -a -fname=nodejs-docker -q | xargs -r docker container rm'
             }
         }
-     
+     */
       stage('Docker run') {
             steps{
                   script{
