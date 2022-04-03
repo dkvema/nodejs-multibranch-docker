@@ -61,8 +61,8 @@ pipeline {
                     
               script {
              
-                  dockerImageName = docker.build nodejs-docker 
-                 // sh "docker build -t ${appName}:v1.0.0  . "
+                   
+                 sh "docker build -t ${appName}:v1.0.0  . "
               
                 }
             }
