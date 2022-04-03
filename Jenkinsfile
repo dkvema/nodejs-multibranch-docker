@@ -58,12 +58,12 @@ pipeline {
         stage('Docker build') {
             steps{
                     echo "docker build...."
-                    docker build -t ${appName}:v1.0.0  .
-              /* script {
+                    
+              script {
              
                   sh "docker build -t ${appName}:v1.0.0  . "
               
-            }*/
+            }
             }
         }  
      
