@@ -91,7 +91,7 @@ pipeline {
             }
             }
         }  
-     /*
+     
         stage('upload image to dockerhub') {
             steps{
              script{
@@ -124,7 +124,7 @@ pipeline {
               //sh 'docker container ls -a -fname=nodejs-docker -q | xargs -r docker container rm'
             }
         }
-     */
+     
       stage('Docker run') {
             steps{
                   script{
